@@ -16,7 +16,7 @@ extern char **environ
 
 char *_getline(void);
 char **_token(char *line);
-int _execute'char **com, char **argv);
+int _execute(char **com, char **av);
 
 int _strlen(char *s);
 char _strdup(const char *str);

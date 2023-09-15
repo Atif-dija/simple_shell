@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * _token -
+ * _token - return the  array of command execute by the user
  *
- * @line:
+ * @line: input of function
  *
- * Return:
+ * Return: array of command
  */
 char **_token(char *line)
 {
