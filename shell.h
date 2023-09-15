@@ -12,7 +12,7 @@
 #include <sys/stat.h>
 
 #define DELIM " \t\n"
-extern char **environ
+extern char **environ;
 
 char *_getline(void);
 char **_token(char *line);

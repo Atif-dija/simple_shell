@@ -17,7 +17,7 @@ int _execute(char **com, char av)
 	child = fork();
 	if (child == 0)
 	{
-		if (execve(com[0], com, environ)
+		if (execve(com[0], com, environ))
 		{
 			perror(av[0]);
 			freearray(com);
