@@ -9,7 +9,7 @@
  */
 char **_token(char *line)
 {
-	char *token = NULL, tmp = NULL;
+	char *token = NULL, *tmp = NULL;
 	char **com = NULL;
 	int c = 0, i = 0;
 
@@ -17,6 +17,12 @@ char **_token(char *line)
 		return (NULL);
 	tmp = _strdup(line);
 	token = strtok(tmp, DELIM);
+	if (token == NULL)
+	{
+		free(line);
+		line = NULL;
+		return (NULL);
+	}
 	while (token)
 	{
 		c++;
@@ -35,7 +41,7 @@ char **_token(char *line)
 	while (token)
 	{
 		com[i++] = _strdup(token);
-		token = sstrtok(NULL, DELIM);
+		token = strtok(NULL, DELIM);
 	}
 	free(line);
 	com[i] = NULL;

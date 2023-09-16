@@ -12,14 +12,14 @@
 #include <sys/stat.h>
 
 #define DELIM " \t\n"
-extern char **environ
+extern char **environ;
 
 char *_getline(void);
 char **_token(char *line);
-int _execute(char **com, char **av);
+int execute(char **com, char **av);
 
 int _strlen(char *s);
-char _strdup(const char *str);
+char *_strdup(const char *str);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);

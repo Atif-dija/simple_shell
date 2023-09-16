@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _execute - function that executes the program
+ * execute - function that executes the program
  *
  * @com: the command written by the user
  * @av: array of the command
@@ -9,7 +9,7 @@
  * Return: retrieve the exit status of a child process after it has executed
  */
 
-int _execute(char **com, char av)
+int execute(char **com, char **av)
 {
 	pid_t child;
 	int statuts;
@@ -17,7 +17,7 @@ int _execute(char **com, char av)
 	child = fork();
 	if (child == 0)
 	{
-		if (execve(com[0], com, environ)
+		if (execve(com[0], com, environ))
 		{
 			perror(av[0]);
 			freearray(com);
@@ -29,7 +29,7 @@ int _execute(char **com, char av)
 		waitpid(child, &statuts, 0);
 		freearray(com);
 	}
-	return (WEXITSTATUS(status));
+	return (WEXITSTATUS(statuts));
 }
 
 

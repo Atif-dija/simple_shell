@@ -110,7 +110,7 @@ int _strlen(char *s)
  * Return: new copy of the string
  */
 
-char _strdup(const char *str)
+char *_strdup(const char *str)
 {
 	char *p;
 	int i, len = 0;

@@ -9,11 +9,11 @@ char *_getline(void)
 {
 	char *line = NULL;
 	size_t size = 0;
-	ssize_t c;
+	ssize_t n;
 
 	if (isatty(STDIN_FILENO))
 		write(STDIN_FILENO, "$ ", 2);
-	c = getline(&line, &size, stdin);
+	n = getline(&line, &size, stdin);
 	if (n == -1)
 	{
 		free(line);
