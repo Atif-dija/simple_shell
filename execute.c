@@ -12,7 +12,7 @@
 int execute(char **com, char **av)
 {
 	pid_t child;
-	int statuts;
+	int status;
 
 	child = fork();
 	if (child == 0)
@@ -26,10 +26,8 @@ int execute(char **com, char **av)
 	}
 	else
 	{
-		waitpid(child, &statuts, 0);
+		waitpid(child, &status, 0);
 		freearray(com);
 	}
-	return (WEXITSTATUS(statuts));
+	return (WEXITSTATUS(status));
 }
-
-
