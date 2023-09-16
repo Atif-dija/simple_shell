@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * _strcpy -  function that copies the string pointed to by src
+ * _strcpy - function that copies the string pointed to by src
  *  including the terminating null byte (\0)
  *  to the buffer pointed to by dest
  *
@@ -9,24 +9,21 @@
  *
  *  Return: dest
  */
-char *_strcpy(char *dest, char *src)
+
+char *_strcpy(char *dest, const char *src)
 {
-	int i, length = 0;
+    int i = 0;
 
-	while (*src != '\0')
-	for (i = 0; src[i] != '\0'; i++)
-	{
-		length++;
-	}
+    while (src[i] != '\0')
+    {
+        dest[i] = src[i];
+        i++;
+    }
 
-	for (i = 0; src[i] < length; i++)
-	for (i = 0; i < length; i++)
-	{
-		dest[i] = src[i];
-	}
-	dest[length] = '\0';
-	return (dest);
+    dest[i] = '\0';
+    return (dest);
 }
+
 
 /**
  * _strcmp - function that compares two strings
@@ -39,15 +36,15 @@ char *_strcpy(char *dest, char *src)
 
 int _strcmp(char *s1, char *s2)
 {
-	int n = 0;
+        int n = 0;
 
-	while (s1[n] != '\0' && s2[n] != '\0')
-	{
-		if (s1[n] != s2[n])
-			return (s1[n] - s2[n]);
-		n++;
-	}
-	return (0);
+        while (s1[n] != '\0' && s2[n] != '\0')
+        {
+                if (s1[n] != s2[n])
+                        return (s1[n] - s2[n]);
+                n++;
+        }
+        return (0);
 }
 
 /**
@@ -65,19 +62,19 @@ char *_strcat(char *dest, char *src)
 char *s_dest = dest;
 char *s_src = src;
 
-	while (*s_dest != '\0')
-	{
-		s_dest++;
-	}
+        while (*s_dest != '\0')
+        {
+                s_dest++;
+        }
 
-	while (*s_src != '\0')
-	{
-		*s_dest = *s_src;
-		s_dest++;
-		s_src++;
-	}
-	*s_dest = '\0';
-	return (dest);
+        while (*s_src != '\0')
+        {
+                *s_dest = *s_src;
+                s_dest++;
+                s_src++;
+        }
+        *s_dest = '\0';
+        return (dest);
 }
 
 /**
@@ -88,17 +85,17 @@ char *s_src = src;
  * Return: the length of a string
  */
 
-int _strlen(char *s)
+int _strlen(const char *s)
 {
-	int length = 0;
+    int length = 0;
 
-	while (*s != '\0')
-	{
-		length++;
-		s++;
-	}
+    while (*s != '\0')
+    {
+        length++;
+        s++;
+    }
 
-	return (length);
+    return (length);
 }
 
 /**
@@ -112,19 +109,13 @@ int _strlen(char *s)
 
 char *_strdup(const char *str)
 {
-	char *p;
-	int i, len = 0;
+	int len = _strlen(str);
+	char *p = malloc(sizeof(char) * (len + 1));
 
-	if (*str != '\0')
-	{
-		len++;
-		str++;
-	}
-	str = str - len;
-	p = malloc(sizeof(char) * (len + 1));
 	if (p == NULL)
 		return (NULL);
-	for (i = 0; i <= len; i++)
-		p[i] = str[i];
+
+	_strcpy(p, str);
 	return (p);
 }
+
