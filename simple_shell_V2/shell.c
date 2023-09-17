@@ -22,7 +22,9 @@ void execute_command(char *command)
 	{
 		char *token;
 		char *args[100];
-		int i = 0;
+		int i;
+
+		i = 0;
 
 		token = strtok(command, " ");
 
@@ -35,11 +37,16 @@ void execute_command(char *command)
 		args[i] = NULL;
 
 		execvp(args[0], args);
-		perror(args[0]);
+
+		fprintf(stderr, "%s: command not found\n", args[0]);
 		exit(EXIT_FAILURE);
-	} else if (pid < 0) {
+	}
+	else if (pid < 0)
+	{
 		perror("Fork failed");
-	} else {
+	}
+	else
+	{
 		wait(&status);
 	}
 }
