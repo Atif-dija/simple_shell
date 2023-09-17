@@ -36,10 +36,11 @@ void execute_command(char *command)
 
 		args[i] = NULL;
 
-		execvp(args[0], args);
-
-		fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
-		exit(EXIT_FAILURE);
+		if (execvp(args[0], args) == -1)
+        {
+            fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
+            exit(127);
+        }
 	}
 	else if (pid < 0)
 	{
