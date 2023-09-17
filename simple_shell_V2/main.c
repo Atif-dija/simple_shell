@@ -7,16 +7,11 @@ int main(void)
 	char *input = NULL;
 	size_t len = 0;
 	ssize_t read;
-	int first_run = 1;
 
 	do
 	{
-		if (first_run)
-		{
-			first_run = 0;
-		} else {
-			printf("$ ");
-		}
+		printf("$ ");
+		fflush(stdout);
 		read = getline(&input, &len, stdin);
 
 		if (read != -1)
@@ -29,7 +24,6 @@ int main(void)
 			free(input);
 			break;
 		}
-
 	} while (1);
 	return (0);
 }
