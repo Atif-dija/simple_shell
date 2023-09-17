@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 /**
  * execute_command - executes a command entered by the user
  * @command: the command to be executed
