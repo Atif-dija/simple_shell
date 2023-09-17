@@ -10,7 +10,8 @@ int main(void)
 
 	do
 	{
-		printf("$ ");
+		if (isatty(STDIN_FILENO) && isatty(STDOUT_FILENO))
+			printf("$ ");
 		fflush(stdout);
 		read = getline(&input, &len, stdin);
 
