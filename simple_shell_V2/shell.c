@@ -12,40 +12,11 @@
 
 void execute_command(char *command)
 {
-	pid_t pid;
-	int status;
+	int status = system(command);
 
-	pid = fork();
-
-	if (pid == 0)
+	if (status == -1)
 	{
-		char *token;
-		char *args[100];
-		int i;
-
-		i = 0;
-
-		token = strtok(command, " ");
-
-		while (token != NULL)
-		{
-			args[i++] = token;
-			token = strtok(NULL, " ");
-		}
-
-		args[i] = NULL;
-
-		execvp(args[0], args);
-
-		perror("Error");
+		perror("system");
 		exit(EXIT_FAILURE);
-	}
-	else if (pid < 0)
-	{
-		perror("Fork failed");
-	}
-	else
-	{
-		wait(&status);
 	}
 }
