@@ -11,18 +11,19 @@ int main(void)
 
 	do
 	{
-		if (!first_run)
+		if (first_run)
 		{
+			first_run = 0;
+		} else {
 			printf("$ ");
 		}
-		first_run = 0;
 		read = getline(&input, &len, stdin);
 
 		if (read != -1)
 		{
 			input[read - 1] = '\0';
 			execute_command(input);
-        }
+		}
 		else
 		{
 			free(input);
