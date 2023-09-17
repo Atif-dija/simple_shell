@@ -38,7 +38,7 @@ void execute_command(char *command)
 
 		execvp(args[0], args);
 
-		fprintf(stderr, "%s: command not found\n", args[0]);
+		fprintf(stderr, "./hsh: 1: %s: command not found\n", args[0]);
 		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
