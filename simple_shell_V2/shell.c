@@ -1,5 +1,6 @@
 #include "shell.h"
 #include "builtin.h"
+#include "helpers.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -9,44 +10,38 @@
 /**
  * execute_command - Executes a command entered by the user
  * @command: the command to be executed
- * Return: nothing
  */
-
+ 
 void execute_command(char *command)
 {
-    if (is_builtin_command(command))
-	{
-        execute_builtin_command(command);
-    } else {
-        pid_t pid;
-        int status;
+	pid_t pid;
+    int status;
 
-        pid = fork();
+    char *args[100];
+    int i = 0;
 
-        if (pid == 0) {
-            char *token;
-            char *args[100];
-            int i;
+    char *token = strtok(command, " ");
+    while (token != NULL && i < 99)
+    {
+        args[i++] = token;
+        token = strtok(NULL, " ");
+    }
+    args[i] = NULL;
 
-            i = 0;
+    pid = fork();
 
-            token = strtok(command, " ");
-
-            while (token != NULL) {
-                args[i++] = token;
-                token = strtok(NULL, " ");
-            }
-
-            args[i] = NULL;
-
-            execvp(args[0], args);
-
-            fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
-            exit(EXIT_FAILURE);
-        } else if (pid < 0) {
-            perror("Fork failed");
-        } else {
-            wait(&status);
-        }
+    if (pid == 0)
+    {
+        execvp(args[0], args);
+        fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
+        exit(EXIT_FAILURE);
+    }
+    else if (pid < 0)
+    {
+        perror("Fork failed");
+    }
+    else
+    {
+        wait(&status);
     }
 }
