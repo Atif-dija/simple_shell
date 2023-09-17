@@ -10,44 +10,38 @@
  * @command: the command to be executed
  * Return: nothing
  */
- 
+
 void execute_command(char *command)
 {
-	pid_t pid;
-	int status;
+    pid_t pid;
+    int status;
 
-	pid = fork();
+    pid = fork();
 
-	if (pid == 0)
-	{
-		char *token;
-		char *args[100];
-		int i;
+    if (pid == 0)
+    {
+        char *args[100];
+        int i = 0;
 
-		i = 0;
-
-		token = strtok(command, " ");
-
-		while (token != NULL)
-		{
-			args[i++] = token;
-			token = strtok(NULL, " ");
-		}
-
-		args[i] = NULL;
-
-		if (execvp(args[0], args) == -1)
+        char *token = strtok(command, " ");
+        while (token != NULL && i < 99)
         {
-            fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
-            exit(127);
+            args[i++] = token;
+            token = strtok(NULL, " ");
         }
-	}
-	else if (pid < 0)
-	{
-		perror("Fork failed");
-	}
-	else
-	{
-		wait(&status);
-	}
+        args[i] = NULL;
+
+        execvp(args[0], args);
+
+        fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
+        exit(EXIT_FAILURE);
+    }
+    else if (pid < 0)
+    {
+        perror("Fork failed");
+    }
+    else
+    {
+        wait(&status);
+    }
 }
