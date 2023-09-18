@@ -11,7 +11,7 @@
 int main(int ac, char **av)
 {
 	char *line = NULL, **comm = NULL;
-	int i, status = 0;
+	int status = 0;
 	(void) ac;
 
 	while (1)
