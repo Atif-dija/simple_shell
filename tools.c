@@ -34,10 +34,7 @@ char *_itoa(int n)
 	int i = 0;
 
 	if (n == 0)
-	{
-		buffer[i] = '0';
-		i++;
-	}
+		buffer[i++] = '0';
 	else
 	{
 		while (n > 0)
