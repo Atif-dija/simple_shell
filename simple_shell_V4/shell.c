@@ -9,7 +9,7 @@ extern char **environ;
 
 void display_prompt(void)
 {
-    /* write(STDOUT_FILENO, "$", 1); */
+    write(STDOUT_FILENO, "", 0);
 }
 
 char *read_user_input(void)
@@ -23,7 +23,7 @@ char *read_user_input(void)
     {
         if (feof(stdin))
         {
-            write(STDOUT_FILENO, "\n", 1);
+            write(STDOUT_FILENO, "", 1);
             free(line);
             exit(EXIT_SUCCESS);
         }
