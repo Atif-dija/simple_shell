@@ -16,16 +16,19 @@ extern char **environ;
 
 char *_getline(void);
 char **_token(char *line);
-int _execute(char **com, char **av);
+int _execute(char **comd, char **av, int indx);
 char *_getenv(char *var);
 char *_getpath(char *cmd);
 
 char *_strdup(const char *str);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
-void freearray(char **ar);
-
 int _strlen(const char *s);
 char *_strcpy(char *dest, const char *src);
+
+void freearray(char **ar);
+char *_itoa(int n);
+void reverse_str(char *str, int len);
+void printerr(char *name, char *cmd, int indx);
 
 #endif

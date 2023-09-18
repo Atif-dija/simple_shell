@@ -3,16 +3,24 @@
 /**
  * _execute - function that executes the program
  *
- * @com: the command written by the user
+ * @comd: the command written by the user
  * @av: array of the command
  *
  * Return: retrieve the exit status of a child process after it has executed
  */
 
-int _execute(char **com, char **av)
+int _execute(char **comd, char **av,int indx)
 {
 	pid_t child;
 	int status;
+	char *full_cmd = _getpath(comd[0]);
+
+	if (!full_cmd)
+	{
+		printerr(av[0], comd[0], indx);
+		freearray(comd);
+		return (127);
+	}
 
 	child = fork();
 	if (child == 0)
