@@ -17,5 +17,5 @@ void freearray(char **ar)
 		free(ar[i]);
 		ar[i] = NULL;
 	}
-	free(ar);
+	free(ar), ar = NULL;
 }

@@ -1,13 +1,18 @@
 #include "shell.h"
 /**
  * main - Entry point of the program
+ *
+ * @ac: The size of the av
+ * @av: An array of size ac
+ *
  * Return: Always 0
  */
 
-int main(void)
+int main(int ac, char **av)
 {
 	char *line = NULL, **comm = NULL;
 	int i, status = 0;
+	(void) ac;
 
 	while (1)
 	{
@@ -21,12 +26,7 @@ int main(void)
 		comm = _token(line);
 		if (!comm)
 			continue;
-		for (i = 0; comm[i]; i++)
-		{
-			printf("%s\n", comm[i]);
-			free(comm[i]), comm[i] = NULL;
-		}
-		free(comm), comm = NULL;
+		status = _execute(comm, av);
 	}
 
 	return (0);

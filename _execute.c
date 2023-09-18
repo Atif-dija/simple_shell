@@ -21,7 +21,7 @@ int _execute(char **com, char **av)
 		{
 			perror(av[0]);
 			freearray(com);
-			exit(127);
+			exit(0);
 		}
 	}
 	else
