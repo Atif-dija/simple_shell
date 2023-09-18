@@ -72,7 +72,7 @@ char *s_src = src;
 			*s_dest = *s_src;
 			s_dest++;
 			s_src++;
-        }
+		}
 		*s_dest = '\0';
 		return (dest);
 }
