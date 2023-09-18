@@ -5,11 +5,12 @@
  *
  * @comd: the command written by the user
  * @av: array of the command
+ * @indx: input of function
  *
  * Return: retrieve the exit status of a child process after it has executed
  */
 
-int _execute(char **comd, char **av,int indx)
+int _execute(char **comd, char **av, int indx)
 {
 	pid_t child;
 	int status;
@@ -25,17 +26,17 @@ int _execute(char **comd, char **av,int indx)
 	child = fork();
 	if (child == 0)
 	{
-		if (execve(com[0], com, environ) == -1)
+		if (execve(comd[0], comd, environ) == -1)
 		{
 			perror(av[0]);
-			freearray(com);
+			freearray(comd);
 			exit(0);
 		}
 	}
 	else
 	{
 		waitpid(child, &status, 0);
-		freearray(com);
+		freearray(comd);
 	}
 	return (WEXITSTATUS(status));
 }

@@ -84,9 +84,9 @@ void reverse_str(char *str, int len)
 
 void printerr(char *name, char *cmd, int indx)
 {
-	char *idx, msg[] ": not found\n";
+	char *idx, msg[] = ": not found\n";
 
-	idx = _toa(indx);
+	idx = _itoa(indx);
 	write(STDERR_FILENO, name, _strlen(name));
 	write(STDERR_FILENO, ": ", 2);
 	write(STDERR_FILENO, idx, _strlen(idx));
