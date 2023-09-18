@@ -23,7 +23,7 @@ int main(void)
 
 		commands = _token(input);
 
-		exit_status = execute(commands, NULL);
+		exit_status = _execute(commands, NULL);
 
 		free(input);
 		freearray(commands);

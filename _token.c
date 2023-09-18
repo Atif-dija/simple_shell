@@ -19,8 +19,8 @@ char **_token(char *line)
 	token = strtok(tmp, DELIM);
 	if (token == NULL)
 	{
-		free(line);
-		line = NULL;
+		free(line), line = NULL;
+		free(tmp), tmp = NULL;
 		return (NULL);
 	}
 	while (token)
