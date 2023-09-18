@@ -43,7 +43,7 @@ char **_token(char *line)
 		com[i++] = _strdup(token);
 		token = strtok(NULL, DELIM);
 	}
-	free(line);
+	free(line), line = NULL;
 	com[i] = NULL;
 	return (com);
 }

@@ -6,29 +6,27 @@
 
 int main(void)
 {
-	char *input;
-	char **commands;
-	int exit_status;
+	char *line = NULL, **comm = NULL;
+	int i, status = 0;
 
 	while (1)
 	{
-		printf("$ ");
-		input = _getline();
-
-		if (_strcmp(input, "exit") == 0)
+		line = _getline();
+		if (line == NULL)
 		{
-			free(input);
-			break;
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
+			return (status);
 		}
-
-		commands = _token(input);
-
-		exit_status = _execute(commands, NULL);
-
-		free(input);
-		freearray(commands);
-
-		printf("Exit status: %d\n", exit_status);
+		comm = _token(line);
+		if (!comm)
+			continue;
+		for (i = 0; comm[i]; i++)
+		{
+			printf("%s\n", comm[i]);
+			free(comm[i]), comm[i] = NULL;
+		}
+		free(comm), comm = NULL;
 	}
 
 	return (0);

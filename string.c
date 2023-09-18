@@ -109,12 +109,22 @@ int _strlen(const char *s)
 
 char *_strdup(const char *str)
 {
-	int len = _strlen(str);
-	char *p = malloc(sizeof(char) * (len + 1));
+	char *p;
+	int i, len = 0;
 
+	if (str == NULL)
+		return (NULL);
+	while (*str != '\0')
+	{
+		len++;
+		str++;
+	}
+	str = str - len;
+	p = malloc(len + 1);
 	if (p == NULL)
 		return (NULL);
-
-	_strcpy(p, str);
+	for (i = 0; i <= len; i++)
+		p[i] = str[i];
 	return (p);
 }
+
