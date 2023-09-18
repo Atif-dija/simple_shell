@@ -9,7 +9,7 @@ extern char **environ;
 
 void display_prompt(void)
 {
-    write(STDOUT_FILENO, "$", 1);
+    /* write(STDOUT_FILENO, "$", 1); */
 }
 
 char *read_user_input(void)
