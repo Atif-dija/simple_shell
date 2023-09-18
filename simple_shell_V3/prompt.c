@@ -18,10 +18,5 @@ char *prompt(void)
         exit(EXIT_SUCCESS);
     }
 
-    if (read > 0 && line[read - 1] == '\n') {
-        line[read - 1] = '\0';
-    }
-
     return line;
 }
-
