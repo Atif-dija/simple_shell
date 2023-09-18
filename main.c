@@ -10,8 +10,8 @@
 
 int main(int ac, char **av)
 {
-	char *line = NULL, **comm = NULL;
-	int status = 0;
+	char *line = NULL, **comd = NULL;
+	int status = 0, indx = 0;
 	(void) ac;
 
 	while (1)
@@ -23,10 +23,11 @@ int main(int ac, char **av)
 				write(STDOUT_FILENO, "\n", 1);
 			return (status);
 		}
-		comm = _token(line);
-		if (!comm)
+		indx++;
+		comd = _token(line);
+		if (!comd)
 			continue;
-		status = _execute(comm, av);
+		status = _execute(comd, av, indx);
 	}
 
 	return (0);
