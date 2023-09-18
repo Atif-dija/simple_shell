@@ -11,15 +11,16 @@ char *prompt(void)
     read = getline(&line, &len, stdin);
 
     if (read == -1) {
-        if (isatty(STDIN_FILENO))
+        if (isatty(STDIN_FILENO)) {
             write(STDOUT_FILENO, "\n", 1);
+        }
         free(line);
-        return NULL;
+        exit(EXIT_SUCCESS);
     }
 
-    if (read > 0 && line[read - 1] == '\n')
+    if (read > 0 && line[read - 1] == '\n') {
         line[read - 1] = '\0';
+    }
 
     return line;
 }
-
