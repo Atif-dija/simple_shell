@@ -14,27 +14,32 @@
  
 void execute_command(char *command)
 {
-	pid_t pid;
+    pid_t pid;
     int status;
-
-    char *args[100];
-    int i = 0;
-
-    char *token = strtok(command, " ");
-    while (token != NULL && i < 99)
-    {
-        args[i++] = token;
-        token = strtok(NULL, " ");
-    }
-    args[i] = NULL;
 
     pid = fork();
 
     if (pid == 0)
     {
-        execvp(args[0], args);
-        fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
-        exit(EXIT_FAILURE);
+        char *token;
+        char *args[100];
+        int i = 0;
+
+        token = strtok(command, " ");
+
+        while (token != NULL && i < 99)
+        {
+            args[i++] = token;
+            token = strtok(NULL, " ");
+        }
+
+        args[i] = NULL;
+
+        if (execvp(args[0], args) == -1)
+        {
+            fprintf(stderr, "./hsh: 1: %s: not found\n", args[0]);
+            exit(127);
+        }
     }
     else if (pid < 0)
     {
@@ -43,11 +48,5 @@ void execute_command(char *command)
     else
     {
         wait(&status);
-
-        if (WIFEXITED(status))
-        {
-            int exit_status = WEXITSTATUS(status);
-            exit(exit_status);
-        }
     }
 }
