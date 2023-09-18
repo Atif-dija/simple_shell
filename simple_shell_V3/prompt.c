@@ -24,3 +24,4 @@ char *prompt(void)
 
     return line;
 }
+
