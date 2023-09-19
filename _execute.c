@@ -26,17 +26,17 @@ int _execute(char **comd, char **av, int indx)
 	child = fork();
 	if (child == 0)
 	{
-		if (execve(comd[0], comd, environ) == -1)
+		if (execve(full_cmd, comd, environ) == -1)
 		{
-			perror(av[0]);
+			free(full_cmd), full_cmd = NULL;
 			freearray(comd);
-			exit(0);
 		}
 	}
 	else
 	{
 		waitpid(child, &status, 0);
 		freearray(comd);
+		free(full_cmd), full_cmd = NULL;
 	}
 	return (WEXITSTATUS(status));
 }

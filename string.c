@@ -62,23 +62,19 @@ int _strcmp(char *s1, char *s2)
 
 char *_strcat(char *dest, char *src)
 {
+	char *ptr = dest;
 
-char *s_dest = dest;
-char *s_src = src;
+	while (*ptr)
+		ptr++;
 
-		while (*s_dest != '\0')
-		{
-			s_dest++;
-		}
-
-		while (*s_src != '\0')
-		{
-			*s_dest = *s_src;
-			s_dest++;
-			s_src++;
-		}
-		*s_dest = '\0';
-		return (dest);
+	while (*src)
+	{
+		*ptr = *src;
+		ptr++;
+		src++;
+	}
+	*ptr = '\0';
+	return (dest);
 }
 
 /**
