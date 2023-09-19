@@ -80,6 +80,7 @@ void reverse_str(char *str, int len)
  * @name: name of shell
  * @cmd: command
  * @indx: index of command
+ *
  */
 
 void printerr(char *name, char *cmd, int indx)
