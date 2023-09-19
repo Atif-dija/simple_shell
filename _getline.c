@@ -5,6 +5,7 @@
  *
  * Return: line of text
  */
+
 char *_getline(void)
 {
 	char *line = NULL;
