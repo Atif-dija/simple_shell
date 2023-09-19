@@ -5,7 +5,7 @@
  *
  * @cmd: input of function
  *
- * Return: a pointer to the path or NULL
+ * Return: a pointer to the path or return NULL
  */
 
 char *_getpath(char *cmd)
