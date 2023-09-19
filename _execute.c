@@ -28,8 +28,8 @@ int _execute(char **comd, char **av, int indx)
 	{
 		if (execve(full_cmd, comd, environ) == -1)
 		{
-			free(full_cmd), full_cmd = NULL;
 			freearray(comd);
+			free(full_cmd), full_cmd = NULL;
 		}
 	}
 	else
