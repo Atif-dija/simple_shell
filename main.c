@@ -23,11 +23,16 @@ int main(int ac, char **av)
 				write(STDOUT_FILENO, "\n", 1);
 			return (status);
 		}
+
 		indx++;
 		comd = _token(line);
+
 		if (!comd)
 			continue;
-		status = _execute(comd, av, indx);
+		if(is_builtin(comd[0]))
+			handle_builtin(comd, av, &status, indx);
+		else
+			status = _execute(comd, av, indx);
 	}
 
 	return (0);

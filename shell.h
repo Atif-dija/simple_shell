@@ -20,6 +20,11 @@ int _execute(char **comd, char **av, int indx);
 char *_getenv(char *var);
 char *_getpath(char *cmd);
 
+void handle_builtin(char **cmd, char **av, int *status, int indx);
+void exit_shell(char **cmd, int *status);
+void print_env(char **cmd, int *status);
+int is_builtin(char *cmd);
+
 char *_strdup(const char *str);
 char *_strcat(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
