@@ -3,7 +3,7 @@
 /**
  * _execute - function that executes the program
  *
- * @comd: the command written by the user
+ * @comd: the command written by user
  * @av: array of the command
  * @indx: input of function
  *
