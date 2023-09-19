@@ -4,6 +4,7 @@
  * freearray - free an array of string
  *
  * @ar: an array
+ *
  */
 
 void freearray(char **ar)
