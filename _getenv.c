@@ -7,7 +7,7 @@
  * the name of the environment variable
  *
  * Return: a pointer to the value associated with that variable if it exists
- * or NULL
+ * or return NULL
  */
 
 char *_getenv(char *var)
