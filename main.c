@@ -29,10 +29,10 @@ int main(int ac, char **av)
 
 		if (!comd)
 			continue;
-		if (is_builtin(comd[0]))
+		/*if (is_builtin(comd[0]))
 			handle_builtin(comd, av, &status, indx);
-		else
-			status = _execute(comd, av, indx);
+		else*/
+		status = _execute(comd, av, indx);
 	}
 
 	return (0);
