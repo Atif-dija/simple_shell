@@ -25,7 +25,6 @@ char *_strcpy(char *dest, const char *src)
 	return (dest);
 }
 
-
 /**
  * _strcmp - function that compares two strings
  *
