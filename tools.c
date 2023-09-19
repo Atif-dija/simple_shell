@@ -27,6 +27,7 @@ void freearray(char **ar)
  * @n: input of function
  *
  * Return: a pointer to a string
+ *
  */
 
 char *_itoa(int n)
