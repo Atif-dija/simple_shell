@@ -9,6 +9,7 @@ void variables_expand(data_of_program *data)
 {
     int i;
     char line[BUFFER_SIZE] = {0}, result[BUFFER_SIZE] = {'\0'};
+    int skip = 0;
 
     if (data->input_line == NULL)
         return;
@@ -20,6 +21,14 @@ void variables_expand(data_of_program *data)
         {
             /* Comment detected, stop processing */
             break;
+        }
+
+        if (line[i] == '#') {
+            skip = 1;
+        }
+
+        if (skip) {
+            continue;
         }
 
         if (line[i] == '$' && line[i + 1] == '?')
@@ -46,7 +55,6 @@ void variables_expand(data_of_program *data)
         data->input_line = duplicate_string(result);
     }
 }
-
 
 /**
  * alias_expand - expands the aliases
