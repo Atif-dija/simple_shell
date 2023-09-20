@@ -31,7 +31,7 @@ char *get_env_key(char *key, data_of_program *data)
  * @key: the name of the variable to set
  * @value: the new value
  * @data: the pointer to the program's data struct
- * Return: 1 if the parameters are NULL, 2 if there is an error, or 0 if success
+ * Return: 1 if the parameters are NULL, 2 if there is an error, 0 if success
  */
 
 int set_env_key(char *key, char *value, data_of_program *data)
